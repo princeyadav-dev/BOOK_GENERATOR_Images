@@ -1,0 +1,7 @@
+python-docx>=1.1.0
+PyYAML>=6.0
+pypdf>=4.0
+Pillow>=10.0
+# LLM backend (install the one you use)
+anthropic>=0.40.0
+openai>=1.40.0

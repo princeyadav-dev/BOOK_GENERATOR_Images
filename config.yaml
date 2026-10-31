@@ -1,0 +1,75 @@
+# ======================= BOOK (aap sirf yahan badlo) =======================
+book:
+  mode: fiction                 # fiction | nonfiction
+  title: ""                     # khali chhodo to outline se aayega
+  subtitle: ""
+  author: "Your Name"
+  topic: "Ek chhote shehar ki ladki jo bade shehar se wapas ghar lauti hai"
+  summary: >
+    Meera 10 saal baad apne chhote shehar wapas aati hai kyunki pita ki tabiyat kharab hai.
+    Purane ghar, purane rishte aur adhoore sawaal uska intezaar kar rahe hain.
+  motive: "Reader ko ye feel ho ki ghar lautna haar nahi, maafi aur samajh ka rasta hai."
+  audience: "Adult readers, 25-45, literary/family drama"
+  language: "Hinglish"          # English | Hindi | Hinglish | ...
+  pov: "third person limited (Meera), past tense"
+  tone: "warm, thoda melancholic, kabhi kabhi halka humor"
+  emotional_arc: "ch1 uneasy curiosity -> middle loss and anger -> end quiet hope"
+  chapters: 12
+  words_per_chapter: 1200       # free tier par chhote chapters; limit badhne par 2000 kar do
+  # SABSE IMPORTANT: apni real kahaniyan, jagah, cheezein, opinions. Jitna specific, utni jaandaar book.
+  author_notes: |
+    - Meri nani ke ghar ki angeethi aur sardiyon ki raat ka dhuan
+    - Bachpan mein bhai ke saath cycle se school jaana, ek baar chain toot gayi thi
+  banned_phrases: ["tapestry", "delve"]   # defaults ke upar extra
+  # AI-use disclosure: KDP ke upload form mein bhi AI-generated content declare karna zaroori hai
+  copyright_notice: ""
+  dedication: ""
+  about_author: ""
+
+# ============================== LLM ==============================
+llm:
+  backend: groq                 # groq | anthropic | openai | mock (offline test)
+  model: openai/gpt-oss-120b    # .env mein GROQ_MODEL ho to wo is ko override karta hai
+  temperature: 0.9
+  retries: 8
+  max_output_tokens: 5000      # Groq par output cap (0 = no cap); gpt-oss mein reasoning tokens bhi isme gintey hain
+  tpm_limit: 8000               # Groq free tier tokens/minute. Dev/paid tier par 0 kar do
+  reasoning_effort: low         # gpt-oss ke liye: low | medium | high (high = dheere + zyada tokens)
+
+generation:
+  revise_pass: false            # true = har chapter ka extra critique/rewrite (2x cost, better prose)
+  # max_tokens: 8000            # optional override
+
+context:
+  tail_words: 250               # pichle chapter ke last words
+  max_summary_chars: 5000       # isse zyada ho to purane summaries compress honge
+  max_facts_chars: 3500
+
+# ============================= FORMAT =============================
+format:
+  trim_size: "6x9"              # KDP standard (inches)
+  font: "Times New Roman"       # Hindi ke liye "Nirmala UI" / "Noto Serif Devanagari"
+  font_size: 12
+  line_spacing: 1.15
+  first_line_indent: 0.3
+  justify: true
+  chapter_numbering: true
+  chapter_title_size: 20
+  margins:                      # inches; gutter khali = KDP table se auto (page count ke hisaab se)
+    top: 0.75
+    bottom: 0.75
+    outside: 0.6
+    gutter:
+
+# ============================= IMAGES =============================
+images:
+  enabled: true
+  provider: pollinations        # pollinations (free, no key) | huggingface (HF_TOKEN in .env) | placeholder | none
+  style: "soft watercolor illustration, muted warm colors, gentle light, no text, no letters, no watermark, no logos"
+  size: "1024x768"
+  width_in: 4.0                 # page par image ki chaudai (inches)
+  grayscale: true               # true = black & white (KDP paperback sasta); false = colour
+  use_llm_prompts: true
+  seed: 7                       # same seed + same style = chapters ka look ek jaisa
+
+output_dir: ""                  # khali = output/<topic-slug>
